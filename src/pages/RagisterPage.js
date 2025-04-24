@@ -9,7 +9,7 @@ import {
   Alert,
 } from '@mui/material';
 import { useDispatch, useSelector } from 'react-redux';
-import { registerUser } from '../redux/authSlice';
+import { registerUser } from '../features/authSlice';
 import { useNavigate } from 'react-router-dom';
 
 const RegisterPage = () => {
@@ -137,6 +137,7 @@ const RegisterPage = () => {
               variant="standard"
               fullWidth
               sx={{ mb: 3 }}
+              required
             />
             <TextField
               label="Enter Email"
@@ -158,6 +159,7 @@ const RegisterPage = () => {
               variant="standard"
               fullWidth
               sx={{ mb: 3 }}
+              required
             />
             <TextField
               label="Enter Password"
@@ -168,6 +170,7 @@ const RegisterPage = () => {
               variant="standard"
               fullWidth
               sx={{ mb: 3 }}
+              required
             />
 
             <Typography variant="caption" color="textSecondary" sx={{ mb: 2 }}>

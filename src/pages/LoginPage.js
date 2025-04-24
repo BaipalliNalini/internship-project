@@ -1,10 +1,16 @@
 import React, { useState, useEffect } from 'react';
-import { Box, Button, TextField, Typography, Link as MuiLink, CircularProgress } from '@mui/material';
+import {
+  Box,
+  Button,
+  TextField,
+  Typography,
+  Link as MuiLink,
+  CircularProgress
+} from '@mui/material';
 import { useDispatch, useSelector } from 'react-redux';
 import { registerUser, loginUser } from '../features/authSlice';
-import { useNavigate } from 'react-router-dom';
-import { Link as RouterLink } from 'react-router-dom';
-import PasswordStrengthMeter from './PasswordStrengthMeter'; // Custom password strength meter component
+import { useNavigate, Link as RouterLink, useLocation } from 'react-router-dom';
+import PasswordStrengthMeter from './PasswordStrengthMeter';
 
 const LoginRegister = () => {
   const [isRegister, setIsRegister] = useState(false);
@@ -15,18 +21,29 @@ const LoginRegister = () => {
     password: ''
   });
   const [errors, setErrors] = useState({});
+  const [agreedToTerms, setAgreedToTerms] = useState(false);
+
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const location = useLocation();
   const { user, status, error } = useSelector((state) => state.auth);
+
+  // Check if returned from /terms
+  useEffect(() => {
+    const storedData = sessionStorage.getItem('loginData');
+    if (location.pathname === '/login' && !storedData) {
+      setAgreedToTerms(true); // Force terms agreement if no stored login data
+    }
+  }, [location.pathname]);
 
   useEffect(() => {
     if (status === 'succeeded' && user) {
       alert(`Welcome, ${user.name}!`);
-      navigate('/'); // Redirect to homepage after successful login
+      sessionStorage.removeItem('loginData'); // Clear sessionStorage after successful login
+      navigate('/'); // Navigate to home page after successful login
     }
-
     if (status === 'failed' && error) {
-      alert(error); // Show error if login fails
+      alert(error);
     }
   }, [status, user, error, navigate]);
 
@@ -35,8 +52,12 @@ const LoginRegister = () => {
     if (isRegister) {
       if (!formData.name) newErrors.name = 'Name is required';
     }
-    if (!formData.email && !formData.mobile) newErrors.email = 'Please enter email or mobile number';
-    if (!formData.password && isRegister) newErrors.password = 'Password is required';
+    if (!formData.email && !formData.mobile) {
+      newErrors.email = 'Please enter email or mobile number';
+    }
+    if (!formData.password) {
+      newErrors.password = 'Password is required';
+    }
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
@@ -51,8 +72,23 @@ const LoginRegister = () => {
         const { name, email, mobile, password } = formData;
         dispatch(registerUser({ name, email, mobile, password }));
       } else {
-        const { email, mobile } = formData;
-        dispatch(loginUser({ email, mobile }));
+        if (!agreedToTerms) {
+          sessionStorage.setItem('loginData', JSON.stringify(formData)); // Storing login data temporarily
+          navigate('/terms'); // Navigate to the Terms page
+        } else {
+          const { email, mobile, password } = formData;
+          dispatch(loginUser({ email, mobile, password }))
+            .then(() => {
+              // Clear sessionStorage after successful login
+              sessionStorage.removeItem('loginData'); // Clear sessionStorage after successful login
+              navigate('/'); // Redirect to home page after successful login
+            })
+            .catch((error) => {
+              console.error('Login failed:', error);
+              // Optionally, show an error message or reset sessionStorage if needed
+              sessionStorage.removeItem('loginData'); // Clear sessionStorage even on failure
+            });
+        }
       }
     }
   };
@@ -60,17 +96,13 @@ const LoginRegister = () => {
   const switchMode = () => {
     setIsRegister(!isRegister);
     setFormData({ name: '', email: '', mobile: '', password: '' });
+    setErrors({});
+    setAgreedToTerms(false);
+    sessionStorage.removeItem('loginData');
   };
 
   return (
-    <Box
-      display="flex"
-      justifyContent="center"
-      alignItems="center"
-      minHeight="100vh"
-      bgcolor="#f5f5f5"
-      p={2}
-    >
+    <Box display="flex" justifyContent="center" alignItems="center" minHeight="100vh" bgcolor="#f5f5f5" p={2}>
       <Box
         display="flex"
         flexDirection={{ xs: 'column', md: 'row' }}
@@ -81,7 +113,7 @@ const LoginRegister = () => {
         overflow="hidden"
         bgcolor="white"
       >
-        {/* Left side */}
+        {/* Left */}
         <Box
           bgcolor="#1c1c1c"
           width={{ xs: '100%', md: '40%' }}
@@ -103,14 +135,8 @@ const LoginRegister = () => {
           </Typography>
         </Box>
 
-        {/* Right side */}
-        <Box
-          width={{ xs: '100%', md: '60%' }}
-          p={3}
-          display="flex"
-          flexDirection="column"
-          justifyContent="center"
-        >
+        {/* Right */}
+        <Box width={{ xs: '100%', md: '60%' }} p={3} display="flex" flexDirection="column" justifyContent="center">
           {isRegister ? (
             <>
               <TextField
@@ -159,15 +185,16 @@ const LoginRegister = () => {
                 error={Boolean(errors.password)}
                 helperText={errors.password}
               />
-              {/* Password strength indicator */}
               <PasswordStrengthMeter password={formData.password} />
               <Typography variant="caption" color="textSecondary" sx={{ mb: 2 }}>
                 By continuing, you agree to E-commerce's{' '}
                 <MuiLink component={RouterLink} to="/terms" underline="hover">
                   Terms of Use
-                </MuiLink>
+                </MuiLink>{' '}
                 and{' '}
-                <MuiLink href="#" underline="hover">Privacy Policy</MuiLink>.
+                <MuiLink href="#" underline="hover">
+                  Privacy Policy
+                </MuiLink>.
               </Typography>
               <Button
                 variant="contained"
@@ -179,12 +206,7 @@ const LoginRegister = () => {
               </Button>
               <Typography align="center" sx={{ mt: 2 }}>
                 Already have an account?{' '}
-                <MuiLink
-                  component="button"
-                  underline="hover"
-                  onClick={switchMode}
-                  sx={{ fontWeight: 'bold', color: '#1c1c1c' }}
-                >
+                <MuiLink component="button" underline="hover" onClick={switchMode} sx={{ fontWeight: 'bold', color: '#1c1c1c' }}>
                   Log in
                 </MuiLink>
               </Typography>
@@ -202,10 +224,27 @@ const LoginRegister = () => {
                 error={Boolean(errors.email)}
                 helperText={errors.email}
               />
+              <TextField
+                label="Enter Password"
+                name="password"
+                type="password"
+                value={formData.password}
+                onChange={handleChange}
+                variant="standard"
+                fullWidth
+                sx={{ mb: 3 }}
+                error={Boolean(errors.password)}
+                helperText={errors.password}
+              />
               <Typography variant="caption" color="textSecondary" sx={{ mb: 2 }}>
                 By continuing, you agree to E-commerce's{' '}
-                <MuiLink href="#" underline="hover">Terms of Use</MuiLink> and{' '}
-                <MuiLink href="#" underline="hover">Privacy Policy</MuiLink>.
+                <MuiLink href="#" underline="hover">
+                  Terms of Use
+                </MuiLink>{' '}
+                and{' '}
+                <MuiLink href="#" underline="hover">
+                  Privacy Policy
+                </MuiLink>.
               </Typography>
               <Button
                 variant="contained"
@@ -217,12 +256,7 @@ const LoginRegister = () => {
               </Button>
               <Typography align="center" sx={{ mt: 2 }}>
                 New to E-commerce?{' '}
-                <MuiLink
-                  component="button"
-                  underline="hover"
-                  onClick={switchMode}
-                  sx={{ fontWeight: 'bold', color: '#1c1c1c' }}
-                >
+                <MuiLink component="button" underline="hover" onClick={switchMode} sx={{ fontWeight: 'bold', color: '#1c1c1c' }}>
                   Create an account
                 </MuiLink>
               </Typography>
