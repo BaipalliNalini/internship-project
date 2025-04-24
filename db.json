@@ -1,0 +1,370 @@
+{
+  "products": [
+    {
+      "id": "1",
+      "name": "iPhone 14",
+      "price": 999,
+      "image": "https://pngimg.com/uploads/iphone_14/iphone_14_PNG13.png",
+      "description": "The latest iPhone with advanced camera features and A15 Bionic chip.",
+      "rating": 4.5,
+      "features": [
+        "A15 Bionic chip",
+        "Dual-camera system",
+        "5G support",
+        "Ceramic Shield"
+      ],
+      "reviews": [
+        {
+          "user": "Alice",
+          "comment": "Amazing phone!",
+          "stars": 5
+        },
+        {
+          "user": "Bob",
+          "comment": "Battery could be better.",
+          "stars": 4
+        }
+      ]
+    },
+    {
+      "id": "2",
+      "name": "Samsung S23",
+      "price": 899,
+      "image": "https://www.fonehaus.com.pg/wp-content/uploads/Samsung-Galaxy-S23-FE-Black-1024px-1024px.jpg",
+      "description": "High-performance Android phone with great display and camera.",
+      "rating": 4.4,
+      "features": [
+        "120Hz AMOLED",
+        "Snapdragon 8 Gen 2",
+        "Triple rear cameras"
+      ],
+      "reviews": [
+        {
+          "user": "Charlie",
+          "comment": "Love the screen!",
+          "stars": 5
+        },
+        {
+          "user": "Dana",
+          "comment": "Pretty solid all around.",
+          "stars": 4
+        }
+      ]
+    },
+    {
+      "id": "3",
+      "name": "OnePlus 12",
+      "price": 799,
+      "image": "https://cdn.beebom.com/mobile/2024/01/OnePlus-12.png",
+      "description": "Flagship killer with powerful specs and clean software.",
+      "rating": 4.3,
+      "features": [
+        "Snapdragon 8 Gen 2",
+        "Fluid AMOLED",
+        "80W Fast Charging"
+      ],
+      "reviews": [
+        {
+          "user": "Eve",
+          "comment": "Excellent performance!",
+          "stars": 5
+        },
+        {
+          "user": "Frank",
+          "comment": "Software is very smooth.",
+          "stars": 4
+        }
+      ]
+    },
+    {
+      "id": "4",
+      "name": "Google Pixel 8",
+      "price": 699,
+      "image": "https://www.dxomark.com/wp-content/uploads/medias/post-160143/Google-Pixel-8-featured-image-packshot-review-Recovered.jpg",
+      "description": "Clean Android experience and best-in-class camera.",
+      "rating": 4.6,
+      "features": [
+        "Tensor G3 chip",
+        "Magic Eraser",
+        "Pure Android"
+      ],
+      "reviews": [
+        {
+          "user": "Grace",
+          "comment": "Amazing photos!",
+          "stars": 5
+        },
+        {
+          "user": "Henry",
+          "comment": "Sleek and fast.",
+          "stars": 4
+        }
+      ]
+    },
+    {
+      "id": "5",
+      "name": "Naga Dragon Bracelet",
+      "price": 695,
+      "image": "https://fakestoreapi.com/img/71pWzhdJNwL._AC_UL640_QL65_ML3_.jpg",
+      "description": "Handcrafted bracelet with intricate dragon design.",
+      "rating": 4.8,
+      "features": [
+        "Handcrafted",
+        "Durable metal",
+        "Unique dragon design"
+      ],
+      "reviews": [
+        {
+          "user": "Ivy",
+          "comment": "Stylish and strong!",
+          "stars": 5
+        }
+      ]
+    },
+    {
+      "id": "6",
+      "name": "Gold Petite Micropave",
+      "price": 168,
+      "image": "https://fakestoreapi.com/img/61sbMiUnoGL._AC_UL640_QL65_ML3_.jpg",
+      "description": "Elegant gold ring with micropave diamond accents.",
+      "rating": 4.2,
+      "features": [
+        "18k Gold",
+        "Micropave Diamonds",
+        "Delicate design"
+      ],
+      "reviews": [
+        {
+          "user": "Jake",
+          "comment": "Great for gifts.",
+          "stars": 4
+        }
+      ]
+    },
+    {
+      "id": "7",
+      "name": "White Gold Princess",
+      "price": 9.99,
+      "image": "https://fakestoreapi.com/img/71YAIFU48IL._AC_UL640_QL65_ML3_.jpg",
+      "description": "Affordable and elegant white gold accessory.",
+      "rating": 4,
+      "features": [
+        "White gold plated",
+        "Princess-cut crystal"
+      ],
+      "reviews": []
+    },
+    {
+      "id": "8",
+      "name": "Rose Gold Pierced Owl",
+      "price": 10.99,
+      "image": "https://fakestoreapi.com/img/51UDEzMJVpL._AC_UL640_QL65_ML3_.jpg",
+      "description": "Chic owl-themed rose gold earring.",
+      "rating": 4.1,
+      "features": [
+        "Rose gold plated",
+        "Pierced design",
+        "Owl motif"
+      ],
+      "reviews": []
+    },
+    {
+      "id": "9",
+      "name": "WD 2TB Portable Drive",
+      "price": 64,
+      "image": "https://fakestoreapi.com/img/61IBBVJvSDL._AC_SY879_.jpg",
+      "description": "Reliable and fast external storage.",
+      "rating": 4.7,
+      "features": [
+        "USB 3.0",
+        "2TB Capacity",
+        "Plug and play"
+      ],
+      "reviews": []
+    },
+    {
+      "id": "10",
+      "name": "SanDisk 1TB SSD",
+      "price": 109,
+      "image": "https://fakestoreapi.com/img/61U7T1koQqL._AC_SX679_.jpg",
+      "description": "High-speed solid state drive for pros.",
+      "rating": 4.6,
+      "features": [
+        "NVMe SSD",
+        "1TB",
+        "Shock resistant"
+      ],
+      "reviews": []
+    },
+    {
+      "id": "11",
+      "name": "Silicon Power 256GB SSD",
+      "price": 109,
+      "image": "https://fakestoreapi.com/img/71kWymZ+c+L._AC_SX679_.jpg",
+      "description": "Budget-friendly SSD with great performance.",
+      "rating": 4.3,
+      "features": [
+        "SATA III",
+        "256GB",
+        "Durable build"
+      ],
+      "reviews": []
+    },
+    {
+      "id": "12",
+      "name": "WD 4TB Gaming Drive",
+      "price": 114,
+      "image": "https://fakestoreapi.com/img/61mtL65D4cL._AC_SX679_.jpg",
+      "description": "Massive storage designed for gaming.",
+      "rating": 4.7,
+      "features": [
+        "4TB Capacity",
+        "Designed for consoles",
+        "Portable"
+      ],
+      "reviews": []
+    },
+    {
+      "id": "13",
+      "name": "Acer 21.5\" IPS Monitor",
+      "price": 599,
+      "image": "https://fakestoreapi.com/img/81QpkIctqPL._AC_SX679_.jpg",
+      "description": "Full HD monitor with wide viewing angles.",
+      "rating": 4.4,
+      "features": [
+        "IPS Panel",
+        "21.5 inch",
+        "Full HD"
+      ],
+      "reviews": []
+    },
+    {
+      "id": "14",
+      "name": "Samsung 49\" Curved Monitor",
+      "price": 999.99,
+      "image": "https://fakestoreapi.com/img/81Zt42ioCgL._AC_SX679_.jpg",
+      "description": "Ultrawide curved monitor for immersive experience.",
+      "rating": 4.8,
+      "features": [
+        "49 inch",
+        "Curved display",
+        "144Hz refresh rate"
+      ],
+      "reviews": []
+    }
+  ],
+  "cart": [
+    {
+      "id": "3",
+      "name": "OnePlus 12",
+      "price": 799,
+      "image": "https://cdn.beebom.com/mobile/2024/01/OnePlus-12.png",
+      "description": "Flagship killer with powerful specs and clean software.",
+      "rating": 4.3,
+      "features": [
+        "Snapdragon 8 Gen 2",
+        "Fluid AMOLED",
+        "80W Fast Charging"
+      ],
+      "reviews": [
+        {
+          "user": "Eve",
+          "comment": "Excellent performance!",
+          "stars": 5
+        },
+        {
+          "user": "Frank",
+          "comment": "Software is very smooth.",
+          "stars": 4
+        }
+      ]
+    },
+    {
+      "id": "3",
+      "name": "OnePlus 12",
+      "price": 799,
+      "image": "https://cdn.beebom.com/mobile/2024/01/OnePlus-12.png",
+      "description": "Flagship killer with powerful specs and clean software.",
+      "rating": 4.3,
+      "features": [
+        "Snapdragon 8 Gen 2",
+        "Fluid AMOLED",
+        "80W Fast Charging"
+      ],
+      "reviews": [
+        {
+          "user": "Eve",
+          "comment": "Excellent performance!",
+          "stars": 5
+        },
+        {
+          "user": "Frank",
+          "comment": "Software is very smooth.",
+          "stars": 4
+        }
+      ]
+    }
+  ],
+  "wishlist": [
+    {
+      "id": "3",
+      "name": "OnePlus 12",
+      "price": 799,
+      "image": "https://cdn.beebom.com/mobile/2024/01/OnePlus-12.png",
+      "description": "Flagship killer with powerful specs and clean software.",
+      "rating": 4.3,
+      "features": [
+        "Snapdragon 8 Gen 2",
+        "Fluid AMOLED",
+        "80W Fast Charging"
+      ],
+      "reviews": [
+        {
+          "user": "Eve",
+          "comment": "Excellent performance!",
+          "stars": 5
+        },
+        {
+          "user": "Frank",
+          "comment": "Software is very smooth.",
+          "stars": 4
+        }
+      ]
+    },
+    {
+      "id": "1",
+      "name": "iPhone 14",
+      "price": 999,
+      "image": "https://pngimg.com/uploads/iphone_14/iphone_14_PNG13.png",
+      "description": "The latest iPhone with advanced camera features and A15 Bionic chip.",
+      "rating": 4.5,
+      "features": [
+        "A15 Bionic chip",
+        "Dual-camera system",
+        "5G support",
+        "Ceramic Shield"
+      ],
+      "reviews": [
+        {
+          "user": "Alice",
+          "comment": "Amazing phone!",
+          "stars": 5
+        },
+        {
+          "user": "Bob",
+          "comment": "Battery could be better.",
+          "stars": 4
+        }
+      ]
+    }
+  ],
+  "users": [
+    {
+      "id": "0885",
+      "name": "Nalini Baipalli",
+      "email": "nalinibaipalli16@gmail.com",
+      "mobile": "9866395324",
+      "password": "nalini"
+    }
+  ]
+}
