@@ -2,7 +2,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchProducts } from '../features/productSlice';
-import { fetchCart, addToCart, removeFromCart } from '../features/cartSlice';
+import { fetchCart, removeFromCart } from '../features/cartSlice';
 import {
   Typography,
   Card,
@@ -30,11 +30,6 @@ const CartPage = () => {
     await dispatch(removeFromCart(product.id));
     dispatch(fetchCart());
   };
-
-  const handleAddToCart = (product) => {
-    dispatch(addToCart(product));
-  };
-
   const handleBuyNow = (product) => {
     navigate('/buy', { state: { product } });
   };
@@ -104,9 +99,6 @@ const CartPage = () => {
                   </Typography>
 
                   <Stack direction={{ xs: 'column', sm: 'row' }} spacing={2} mt={3} sx={{ flex: 1}}>
-                    <Button variant="contained" color="primary" onClick={() => handleAddToCart(product)} fullWidth>
-                      Add (+)
-                    </Button>
                     <Button variant="contained" color="error" onClick={() => handleRemoveFromCart(product)} fullWidth>
                       Remove ({quantity})
                     </Button>

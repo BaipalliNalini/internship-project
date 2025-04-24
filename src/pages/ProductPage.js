@@ -93,7 +93,7 @@ const ProductsPage = () => {
               </CardContent>
 
               <CardActions sx={{ justifyContent: 'space-between', px: 2, pb: 2 }}>
-                <Stack direction="column" spacing={1} width="100%">
+                <Stack direction="row" spacing={1} width="100%">
                   <Button 
                     variant="contained" 
                     color="primary" 
@@ -119,10 +119,6 @@ const ProductsPage = () => {
           </Grid>
         ))}
       </Grid>
-
-      <Typography variant="h6" align="center" gutterBottom sx={{ marginTop: 4 }}>
-        Cart ({cart.length} items)
-      </Typography>
     </Box>
   );
 };
